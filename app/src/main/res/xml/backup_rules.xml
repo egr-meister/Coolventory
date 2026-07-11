@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Local DataStore preferences may be included in device-to-device transfer / auto backup.
+   No cloud service is used by the app itself; this only governs Android's own backup behavior.
+-->
+<full-backup-content>
+    <include domain="file" path="datastore/" />
+</full-backup-content>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Static splash icon: centered open refrigerator with subtle teal shelves and an amber marker. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#286669"
+        android:strokeWidth="4"
+        android:pathData="M42,24 L78,24 A6,6 0 0 1 84,30 L84,92 A6,6 0 0 1 78,98 L42,98 A6,6 0 0 1 36,92 L36,30 A6,6 0 0 1 42,24 Z" />
+
+    <path android:strokeColor="#3D8F92" android:strokeWidth="4" android:pathData="M37,44 L83,44" />
+    <path android:strokeColor="#3D8F92" android:strokeWidth="3" android:pathData="M39,64 L81,64" />
+    <path android:strokeColor="#3D8F92" android:strokeWidth="3" android:pathData="M39,80 L81,80" />
+
+    <path android:fillColor="#4B9368" android:pathData="M44,51 h10 v11 h-10 z" />
+    <path android:fillColor="#3D8F92" android:pathData="M58,51 h10 v11 h-10 z" />
+    <path android:fillColor="#8DBBD6" android:pathData="M44,68 h12 v10 h-12 z" />
+
+    <path android:fillColor="#D29738" android:pathData="M74,71 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+
+    <path android:strokeColor="#286669" android:strokeWidth="4" android:pathData="M80,52 L80,66" />
+</vector>
