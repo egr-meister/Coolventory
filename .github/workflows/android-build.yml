@@ -25,10 +25,10 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install Android SDK Platform 35 and Build Tools 35.0.0
+      - name: Install Android SDK Platform 36 and Build Tools 36.0.0
         run: |
           yes | sdkmanager --licenses > /dev/null || true
-          sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools"
+          sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools"
 
       - name: Set up Gradle 8.9 (with cache)
         uses: gradle/actions/setup-gradle@v4
@@ -86,8 +86,8 @@ jobs:
 
       - name: Verify APK signature and certificate
         run: |
-          BUILD_TOOLS_DIR="$(ls -d $ANDROID_HOME/build-tools/35.0.0)"
-          APKSIGNER="$BUILD_TOOLS_DIR/apksigner"
+          BUILD_TOOLS_DIR="$(ls -d $ANDROID_HOME/build-tools/*/ | sort -V | tail -n 1)"
+          APKSIGNER="${BUILD_TOOLS_DIR}apksigner"
           echo "Using apksigner at $APKSIGNER"
           CERT_OUTPUT="$($APKSIGNER verify --print-certs "${{ steps.locate_apk.outputs.apk_path }}")"
           echo "$CERT_OUTPUT"

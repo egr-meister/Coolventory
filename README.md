@@ -226,7 +226,7 @@ camera, barcode, OCR, ML, chart, image-loading, or dependency-injection librarie
 
 ### Android configuration
 
-- `compileSdk = 35`, `targetSdk = 35`, `minSdk = 24`.
+- `compileSdk = 36`, `targetSdk = 36`, `minSdk = 24`.
 - Android Gradle Plugin 8.6.x, Kotlin 2.0.x, Compose compiler via the Kotlin Compose plugin.
 - Portrait-locked, edge-to-edge with visible system bars, correct Android Back handling.
 - **16 KB page-size compatibility:** the app ships no native third-party binaries (pure
@@ -307,7 +307,7 @@ installation and verification; upload **only the `.aab`** to Google Play.
 ## GitHub Actions
 
 `.github/workflows/android-build.yml` runs on push to `main` and via manual dispatch. It checks out
-the repo, sets up JDK 17, installs Android SDK Platform 35 and Build Tools 35.0.0, restores the Gradle
+the repo, sets up JDK 17, installs Android SDK Platform 36 and Build Tools 36.0.0, restores the Gradle
 cache, decodes `ANDROID_KEYSTORE_BASE64` into a temporary PKCS12 file, exposes signing values only as
 environment variables, builds the signed release APK and AAB, locates the APK, runs
 `apksigner verify --print-certs`, fails if verification fails or if the certificate contains
