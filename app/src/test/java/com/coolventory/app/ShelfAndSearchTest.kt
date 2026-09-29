@@ -11,6 +11,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.time.LocalDate
 
 class ShelfAndSearchTest {
 
@@ -53,13 +54,16 @@ class ShelfAndSearchTest {
 
     @Test
     fun expiredFilterAndSorting() {
-        val expired = TestData.product(id = "e", expiryDate = "2026-07-01")
-        val fresh = TestData.product(id = "fr", expiryDate = "2026-07-30")
+        // SearchUtils.query/sort evaluate status against the real system clock, so dates are
+        // computed relative to today to stay valid whenever the test runs (no hardcoded dates).
+        val today = LocalDate.now()
+        val expired = TestData.product(id = "e", expiryDate = today.minusDays(30).toString())
+        val fresh = TestData.product(id = "fr", expiryDate = today.plusDays(60).toString())
         val q = ProductQuery(statuses = setOf(StatusFilter.Expired))
         val onlyExpired = SearchUtils.query(listOf(expired, fresh), shelves, q, 3)
         assertEquals(listOf("e"), onlyExpired.map { it.id })
 
-        // Nearest expiry: expired (2026-07-01) sorts before fresh (2026-07-30).
+        // Nearest expiry: the expired product sorts before the fresh one.
         val sorted = SearchUtils.sort(listOf(fresh, expired), shelves, ProductSort.ExpiryNearest, 3)
         assertEquals("e", sorted.first().id)
     }
